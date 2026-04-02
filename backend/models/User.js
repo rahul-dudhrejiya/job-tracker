@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String, //must be text
         required: [true, 'Name is required'], //mandotary
@@ -18,26 +18,26 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         minlength: [6, 'Password must be at least 6 characters'],
         select: false //never send password back in response
+    },
 },
-},
- { 
-    timestamps: true   // auto adds createdAt, updatedAt
-  }
+    {
+        timestamps: true   // auto adds createdAt, updatedAt
+    }
 );
 
-// Hash password before saving 
+// Hash password before saving
 // This runs automatically before every .save()
-userSchema.pre('save', async function (next) {
-
+UserSchema.pre('save', async function () {
+    //in this before it code i make mistake to add next() but it cause error because next is not needed in async function and it will automatically wait for the async code to finish before moving on to the next middleware or route handler. So I remove next() and now it works fine without any error.
     // If password not changed → skip hashing
-    if(!this.isModified('password')) return next()
+    if (!this.isModified('password')) return
 
     // Generate salt (random extra security string)
     const salt = await bcrypt.genSalt(10);
 
     // Hash the password with salt
     this.password = await bcrypt.hash(this.password, salt)
-    next(); //continue saving
+
 })
 
 // Method to check password at login

@@ -25,7 +25,7 @@ const JobSchema = new mongoose.Schema(
         status: {
             type: String,
             // only these values allowed!
-            required: ['Wishlist', 'Applied', 'Interview', 'Offer', 'Rejected'],
+            enum: ['Wishlist', 'Applied', 'Interview', 'Offer', 'Rejected'],
             default: 'Applied',
         },
         salary: {

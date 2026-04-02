@@ -12,11 +12,11 @@ app.use(express.json())
 
 //Import Routes (we make these later)
 //now we will comment because file doesen't exist yet so further server won't run and crashed thats why
-/*const authRoutes = require('./auth/routes')
-const jobRoutes = require('./auth/jobs')
+const authRoutes = require('./routes/auth')
+const jobRoutes = require('./routes/jobs')
 
 app.use('/api/auth', authRoutes)
-app.use('/api/jobs', jobRoutes)*/ 
+app.use('/api/jobs', jobRoutes)
 
 //Test Route
 app.get('/', (req, res) => {
