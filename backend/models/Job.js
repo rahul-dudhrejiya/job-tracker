@@ -44,6 +44,26 @@ const JobSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
+        interviewDate: {
+            type: Date,
+            default: null
+        },
+        statusHistory: [
+            {
+                status: {
+                    type: String,
+                    required: true,
+                },
+                date: {
+                    type: Date,
+                    default: Date.now,
+                },
+                note: {
+                    type: String,
+                    default: '',
+                }
+            }
+        ], // array of { status: String, date: Date }
         priority: {
             type: String,
             enum: ['Low', 'Medium', 'High'], // only these values allowed

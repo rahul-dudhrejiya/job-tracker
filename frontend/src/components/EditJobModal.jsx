@@ -12,7 +12,10 @@ const EditJobModal = ({ job, onClose, onJobUpdated }) => {
     salary: job.salary || '',
     jobUrl: job.jobUrl || '',
     notes: job.notes || '',
-    priority: job.priority || 'Medium'
+    priority: job.priority || 'Medium',
+    interviewDate: job.interviewDate
+      ? new Date(job.interviewDate).toISOString().split('T')[0]
+      : ''
   })
   const [loading, setLoading] = useState(false)
 
@@ -94,6 +97,21 @@ const EditJobModal = ({ job, onClose, onJobUpdated }) => {
                 onChange={handleChange} style={styles.input} />
             </div>
           </div>
+
+          {formData.status === 'Interview' && (
+            <div style={styles.inputGroup}>
+              <label style={styles.label}>
+                📅 Interview Date
+              </label>
+              <input
+                type="date"
+                name="interviewDate"
+                value={formData.interviewDate}
+                onChange={handleChange}
+                style={styles.input}
+              />
+            </div>
+          )}
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Job URL</label>

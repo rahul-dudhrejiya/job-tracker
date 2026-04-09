@@ -34,7 +34,13 @@ const createJob = async (req, res) => {
         // req.user._id comes from protect middleware
         const job = await Job.create({
             ...req.body,  // spread all fields from request
-            user: req.user._id  // add user id to link job to user
+            user: req.user._id,  // add user id to link job to user
+            // Save first status in history automatically!
+            statusHistory: [{
+                status: req.body.status || 'Applied',
+                date: new Date(),
+                note: 'Application created'
+            }]
         })
 
         res.status(201).json({
@@ -121,9 +127,29 @@ const updateJob = async (req, res) => {
         // Update the job
         // { new: true } → return updated job (not old one!)
         // { runValidators: true } → check schema rules on update too
+
+        // Remove empty interviewDate so it doesn't break validation
+        const updateData = { ...req.body }
+        if (updateData.interviewDate === '') {
+            delete updateData.interviewDate
+        }
+
+        // ── Track status change ──────────────────
+        // If status changed → add to history!
+        if (req.body.status && req.body.status !== job.status) {
+            updateData.statusHistory = [
+                ...job.statusHistory,
+                {
+                    status: req.body.status,
+                    date: new Date(),
+                    note: req.body.statusNote || ''
+                }
+            ]
+        }
+
         job = await Job.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            updateData,   //change by req.body
             { new: true, runValidators: true }
         )
 

@@ -12,7 +12,8 @@ const AddJobModal = ({ onClose, onJobAdded }) => {
         salary: '',
         jobUrl: '',
         notes: '',
-        priority: 'Medium'
+        priority: 'Medium',
+        interviewDate: ''
     })
     const [loading, setLoading] = useState(false)
 
@@ -106,6 +107,22 @@ const AddJobModal = ({ onClose, onJobAdded }) => {
                                 style={styles.input} />
                         </div>
                     </div>
+
+                    {/* Show interview date only when status is Interview */}
+                    {formData.status === 'Interview' && (
+                        <div style={styles.inputGroup}>
+                            <label style={styles.label}>
+                                📅 Interview Date
+                            </label>
+                            <input
+                                type="date"
+                                name="interviewDate"
+                                value={formData.interviewDate} 
+                                onChange={handleChange}
+                                style={styles.input}
+                            />
+                        </div>
+                    )}
 
                     <div style={styles.inputGroup}>
                         <label style={styles.label}>Job URL</label>
