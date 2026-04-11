@@ -3,11 +3,20 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+const app = express() // create app first
+
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://job-tracker-backend-oslv.onrender.com',
+        'https://job-tracker-ten-mauve.vercel.app'
+    ],
+    credentials: true
+}))
+
 //Create Express Application
-const app = express()
 
 //Setup Middleware
-app.use(cors())
 app.use(express.json())
 
 //Import Routes (we make these later)
