@@ -1,11 +1,8 @@
 # 🚀 Job Tracker — MERN Stack Application
 
-![Job Tracker](screenshots/analytics.png)
-
-A full-stack job application tracking system built with the MERN stack. Track your job applications, monitor interview dates, visualize progress with charts, and manage your entire job search in one place!
+A full-stack job application tracking system built with the MERN stack!
 
 ## 🌐 Live Demo
-
 🔗 **[Click Here to View Live App](https://job-tracker-ten-mauve.vercel.app)**
 
 ---
@@ -62,42 +59,42 @@ A full-stack job application tracking system built with the MERN stack. Track yo
 
 ## 📁 Project Structure
 
-job-tracker/
-├── backend/
-│   ├── config/
-│   │   └── db.js
-│   ├── controllers/
-│   │   ├── authController.js
-│   │   └── jobController.js
-│   ├── middleware/
-│   │   └── auth.js
-│   ├── models/
-│   │   ├── User.js
-│   │   └── Job.js
-│   ├── routes/
-│   │   ├── auth.js
-│   │   └── jobs.js
-│   └── server.js
-│
-└── frontend/
-└── src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── JobCard.jsx
-│   ├── AddJobModal.jsx
-│   ├── EditJobModal.jsx
-│   ├── Analytics.jsx
-│   ├── StatusTimeline.jsx
-│   └── Loader.jsx
-├── context/
-│   └── AuthContext.jsx
-├── pages/
-│   ├── Login.jsx
-│   ├── Register.jsx
-│   └── Dashboard.jsx
-└── utils/
-├── api.js
-└── interviewHelper.js
+    job-tracker/
+    ├── backend/
+    │   ├── config/
+    │   │   └── db.js
+    │   ├── controllers/
+    │   │   ├── authController.js
+    │   │   └── jobController.js
+    │   ├── middleware/
+    │   │   └── auth.js
+    │   ├── models/
+    │   │   ├── User.js
+    │   │   └── Job.js
+    │   ├── routes/
+    │   │   ├── auth.js
+    │   │   └── jobs.js
+    │   └── server.js
+    │
+    └── frontend/
+        └── src/
+            ├── components/
+            │   ├── Navbar.jsx
+            │   ├── JobCard.jsx
+            │   ├── AddJobModal.jsx
+            │   ├── EditJobModal.jsx
+            │   ├── Analytics.jsx
+            │   ├── StatusTimeline.jsx
+            │   └── Loader.jsx
+            ├── context/
+            │   └── AuthContext.jsx
+            ├── pages/
+            │   ├── Login.jsx
+            │   ├── Register.jsx
+            │   └── Dashboard.jsx
+            └── utils/
+                ├── api.js
+                └── interviewHelper.js
 
 ---
 
@@ -108,33 +105,35 @@ job-tracker/
 - MongoDB Atlas account
 
 ### 1. Clone the repository
-```bash
-git clone https://github.com/rahul-dudhrejiya/job-tracker.git
-cd job-tracker
-```
+
+    git clone https://github.com/rahul-dudhrejiya/job-tracker.git
+    cd job-tracker
 
 ### 2. Setup Backend
-```bash
-cd backend
-npm install
-```
+
+    cd backend
+    npm install
 
 Create `.env` file inside backend folder:
 
-```bash
-npm run dev
-```
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret
+    JWT_EXPIRE=30d
+    NODE_ENV=development
+
+    npm run dev
 
 ### 3. Setup Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
+
+    cd frontend
+    npm install
+    npm run dev
 
 ### 4. Open Browser
-Frontend → http://localhost:5173
-Backend  → http://localhost:5000
+
+    Frontend → http://localhost:5173
+    Backend  → http://localhost:5000
 
 ---
 
@@ -167,5 +166,4 @@ Backend  → http://localhost:5000
 ---
 
 ## 📄 License
-
 MIT License © 2026 Rahul Dudharejiya
